@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG小兵的故事 - 沉浸式地下城冒险与角色养成指南</title>
+    <meta name="description" content="RPG小兵的故事官网，提供最详尽的RPG小兵游戏攻略、职业加点建议、装备搭配心得及地下城通关秘籍。帮助新手快速上手，助你在这个充满挑战的异世界成为最强勇者。">
+    <meta name="keywords" content="RPG小兵的故事, RPG小兵攻略, 地下城冒险, 角色养成, 游戏指南">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #7f8c8d;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 16px;
+            color: var(--primary-color);
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .search-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Section Title */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 24px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .view-all {
+            color: var(--accent-color);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* Character Cards */
+        .char-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .char-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .char-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .char-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .char-info {
+            padding: 20px;
+        }
+
+        .char-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .char-role {
+            display: inline-block;
+            background-color: #eef2f7;
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        .char-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .char-stats {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .stat-item strong {
+            display: block;
+            color: var(--text-main);
+        }
+        .stat-item span {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        /* Guide Layout */
+        .guide-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .guide-article {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .article-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .article-content h3 {
+            font-size: 1.2rem;
+            margin: 20px 0 10px;
+            color: var(--primary-color);
+        }
+
+        .article-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .article-content ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .article-content li {
+            margin-bottom: 8px;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .tag {
+            padding: 8px 16px;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .tag:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .widget-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        .rank-list li {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .rank-num {
+            width: 25px;
+            height: 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .rank-list li:nth-child(1) .rank-num { background-color: #f1c40f; }
+        .rank-list li:nth-child(2) .rank-num { background-color: #bdc3c7; }
+        .rank-list li:nth-child(3) .rank-num { background-color: #d35400; }
+
+        .rank-name {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .rank-level {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: #fff;
+            padding: 60px 20px;
+            margin-top: 40px;
+        }
+
+        .faq-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            margin-top: 15px;
+            color: var(--text-light);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .faq-item .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #ccc;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .header-inner { padding: 0 15px; }
+            nav { display: none; } /* Simplified for mobile */
+            .guide-layout { grid-template-columns: 1fr; }
+            .search-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="#" class="logo">
+            <span>⚔️</span> RPG小兵的故事
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">角色图鉴</a></li>
+                <li><a href="#">装备攻略</a></li>
+                <li><a href="#">副本解析</a></li>
+                <li><a href="#">社区论坛</a></li>
+            </ul>
+        </nav>
+        <button class="search-btn" aria-label="搜索">🔍</button>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>从零开始的勇者之路</h1>
+    <p>探索异世界的奥秘，收集强力装备，组建你的传奇小队。在这里，每一个RPG小兵都有成为英雄的故事。</p>
+    <a href="#" class="cta-btn">立即开始冒险</a>
+</section>
+
+<main class="container">
+    <!-- 角色推荐 -->
+    <section>
+        <div class="section-header">
+            <h2 class="section-title">热门角色推荐</h2>
+            <a href="#" class="view-all">查看全部 &rarr;</a>
+        </div>
+        <div class="char-grid">
+            <article class="char-card">
+                <img src="https://picsum.photos/seed/sword/400/300" alt="剑士角色" class="char-img">
+                <div class="char-info">
+                    <h3 class="char-name">狂暴剑士</h3>
+                    <span class="char-role">近战 / 物理输出</span>
+                    <p class="char-desc">擅长使用双手巨剑，在战场上横冲直撞。高爆发伤害，但防御力较低，需要玩家精准把握进场时机。</p>
+                    <div class="char-stats">
+                        <div class="stat-item"><strong>攻击</strong><span>95</span></div>
+                        <div class="stat-item"><strong>防御</strong><span>40</span></div>
+                        <div class="stat-item"><strong>敏捷</strong><span>60</span></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="char-card">
+                <img src="https://picsum.photos/seed/mage/400/300" alt="法师角色" class="char-img">
+                <div class="char-info">
+                    <h3 class="char-name">奥术法师</h3>
+                    <span class="char-role">远程 / 魔法输出</span>
+                    <p class="char-desc">掌握元素之力的智者，能够释放大范围的毁灭性法术。是清理小怪和对抗大型BOSS的核心力量。</p>
+                    <div class="char-stats">
+                        <div class="stat-item"><strong>攻击</strong><span>88</span></div>
+                        <div class="stat-item"><strong>防御</strong><span>25</span></div>
+                        <div class="stat-item"><strong>法力</strong><span>98</span></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="char-card">
+                <img src="https://picsum.photos/seed/healer/400/300" alt="牧师角色" class="char-img">
+                <div class="char-info">
+                    <h3 class="char-name">圣光牧师</h3>
+                    <span class="char-role">辅助 / 治疗</span>
+                    <p class="char-desc">团队的中流砥柱，能够快速恢复队友生命值并驱散负面状态。没有牧师，团队很难在深层地下城生存。</p>
+                    <div class="char-stats">
+                        <div class="stat-item"><strong>治疗</strong><span>100</span></div>
+                        <div class="stat-item"><strong>防御</strong><span>50</span></div>
+                        <div class="stat-item"><strong>控制</strong><span>30</span></div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 攻略与资讯 -->
+    <section class="guide-layout">
+        <div class="main-content">
+            <div class="section-header">
+                <h2 class="section-title">最新攻略与资讯</h2>
+            </div>
+            
+            <article class="guide-article">
+                <div style="display:flex; justify-content:space-between; margin-bottom:15px; color:#999; font-size:0.9rem;">
+                    <span>2023-10-24</span>
+                    <span>攻略</span>
+                </div>
+                <h2 style="font-size:1.5rem; margin-bottom:15px;">新手必看：RPG小兵的初始属性分配技巧</h2>
+                <p>在游戏初期，属性点的分配决定了你后期的职业走向。本文将详细分析力量、敏捷和智力三种主流加点路线的优劣，帮助你找到最适合自己的成长路径。</p>
+                <p>对于喜欢正面硬刚的玩家，建议前期将80%的属性点投入力量，配合双手武器可以快速推图。而喜欢风筝战术的玩家，则应优先提升敏捷，确保在敌人攻击前完成输出。</p>
+                <h3>技能加点优先级</h3>
+                <ul>
+                    <li><strong>剑士：</strong> 优先升级“冲锋”技能，用于快速接近敌人。</li>
+                    <li><strong>法师：</strong> “火球术”是前期最稳定的伤害来源，请尽早满级。</li>
+                    <li><strong>牧师：</strong> “治疗术”和“神圣护盾”是保命技能，必须保持在最高优先级。</li>
+                </ul>
+                <a href="#" class="view-all" style="color:var(--accent-color); font-weight:bold;">阅读全文 &rarr;</a>
+            </article>
+
+            <article class="guide-article" style="margin-top:30px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:15px; color:#999; font-size:0.9rem;">
+                    <span>2023-10-22</span>
+                    <span>装备解析</span>
+                </div>
+                <h2 style="font-size:1.5rem; margin-bottom:15px;">深渊副本掉落装备全解析：如何打造毕业套装</h2>
+                <p>深渊副本是获取高品质装备的主要来源。不同部位的装备具有不同的词条效果，合理的词条组合比单纯的数值堆砌更重要。</p>
+                <a href="#" class="view-all" style="color:var(--accent-color); font-weight:bold;">阅读全文 &rarr;</a>
+            </article>
+
+            <div class="tag-cloud">
+                <a href="#" class="tag">新手入门</a>
+                <a href="#" class="tag">副本攻略</a>
+                <a href="#" class="tag">PVP竞技</a>
+                <a href="#" class="tag">职业平衡</a>
+                <a href="#" class="tag">版本更新</a>
+                <a href="#" class="tag">成就系统</a>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h4 class="widget-title">热门副本排行榜</h4>
+                <ul class="rank-list">
+                    <li>
+                        <span class="rank-num">1</span>
+                        <span class="rank-name">绝望之塔</span>
+                        <span class="rank-level">全服最高Lv.50</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">2</span>
+                        <span class="rank-name">龙之巢穴</span>
+                        <span class="rank-level">全服最高Lv.45</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">3</span>
+                        <span class="rank-name">暗黑森林</span>
+                        <span class="rank-level">全服最高Lv.40</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">4</span>
+                        <span class="rank-name">幽灵船</span>
+                        <span class="rank-level">全服最高Lv.38</span>
+                    </li>
+                    <li>
+                        <span class="rank-num">5</span>
+                        <span class="rank-name">迷雾沼泽</span>
+                        <span class="rank-level">全服最高Lv.35</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h4 class="widget-title">热门装备推荐</h4>
+                <ul class="rank-list">
+                    <li>
+                        <span class="rank-name" style="width:100%">龙脊战甲</span>
+                        <span class="rank-level" style="margin-left:auto">防御+500</span>
+                    </li>
+                    <li>
+                        <span class="rank-name" style="width:100%">狂暴之刃</span>
+                        <span class="rank-level" style="margin-left:auto">攻击+800</span>
+                    </li>
+                    <li>
+                        <span class="rank-name" style="width:100%">智慧法杖</span>
+                        <span class="rank-level" style="margin-left:auto">法强+750</span>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="faq-inner">
+            <div class="section-header" style="border:none; padding-bottom:0;">
+                <h2 class="section-title">常见问题解答</h2>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 如何获取新的角色？</div>
+                <div class="faq-answer">A: 游戏初期会赠送基础角色，后续可以通过通关特定副本掉落角色碎片进行合成，或参与限时活动获取稀有角色。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: 角色升级经验不足怎么办？</div>
+                <div class="faq-answer">A: 建议利用“经验副本”快速刷取经验，同时合理利用经验药水。加入公会也可以获得每日的经验加成。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Q: PVP竞技场如何排名？</div>
+                <div class="faq-answer">A: 竞技场每周结算一次排名，排名越高获得的荣誉币越多，荣誉币是兑换高级装备的关键货币。</div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4>关于我们</h4>
+            <p style="color:#bdc3c7; font-size:0.9rem;">RPG小兵的故事致力于为玩家提供最全面、最及时的游戏资讯和攻略支持。让我们一起探索无限可能的异世界。</p>
+        </div>
+        <div class="footer-col">
+            <h4>快速导航</h4>
+            <ul>
+                <li><a href="#">游戏首页</a></li>
+                <li><a href="#">角色图鉴</a></li>
+                <li><a href="#">下载客户端</a></li>
+                <li><a href="#">玩家论坛</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>帮助中心</h4>
+            <ul>
+                <li><a href="#">账号安全</a></li>
+                <li><a href="#">充值指南</a></li>
+                <li><a href="#">BUG反馈</a></li>
+                <li><a href="#">联系客服</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>关注我们</h4>
+            <ul>
+                <li><a href="#">官方微博</a></li>
+                <li><a href="#">微信公众号</a></li>
+                <li><a href="#">Discord社区</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2023 RPG小兵的故事攻略站. All Rights Reserved. 本站为非官方网站，仅供攻略分享使用。</p>
+    </div>
+</footer>
+
+<script>
+    // FAQ 交互逻辑
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // 关闭其他已打开的项
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // 切换当前项状态
+                item.classList.toggle('active');
+            });
+        });
+
+        // 简单的搜索框交互反馈（非真实搜索）
+        const searchBtn = document.querySelector('.search-btn');
+        searchBtn.addEventListener('click', () => {
+            const searchTerm = prompt('请输入搜索关键词：');
+            if (searchTerm) {
+                alert('正在搜索关于 "' + searchTerm + '" 的相关攻略...');
+            }
+        });
+    });
+</script>
+
+</body>
+  </html>
