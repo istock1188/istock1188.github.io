@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="萌学园4：时空任务 - 萌骑士团再临，对抗时空魔神，守护萌学园。提供角色介绍、剧情解析、观看指南及粉丝社区讨论。">
+    <meta name="keywords" content="萌学园4, 萌骑士, 时空任务, 台湾偶像剧, 萌学园">
+    <title>萌学园4-时空任务-萌骑士团与时空魔神的终极对决</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary: #FFD700; /* 金色 - 魔法/骑士 */
+            --secondary: #00BFFF; /* 蓝色 - 时空/科技 */
+            --accent: #FF4500; /* 橙红 - 危机/魔神 */
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --font-main: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部导航 */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), var(--dark-bg)), 
+                        url('https://picsum.photos/seed/moexuan4/1920/1080') no-repeat center center/cover;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(0,191,255,0.1) 0%, rgba(15,23,42,0.8) 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .tagline {
+            display: inline-block;
+            background: rgba(0, 191, 255, 0.2);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #000;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 191, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* 通用 Section 样式 */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* 角色卡片 */
+        .char-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .char-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .char-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .char-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            filter: brightness(0.8);
+            transition: filter 0.3s;
+        }
+
+        .char-card:hover .char-img {
+            filter: brightness(1);
+        }
+
+        .char-info {
+            padding: 20px;
+        }
+
+        .char-name {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .char-role {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .char-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* 剧情介绍 */
+        .plot-section {
+            background: #162032;
+        }
+
+        .plot-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .plot-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .plot-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        .plot-visual {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .plot-visual img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,215,0,0.1);
+        }
+
+        .plot-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--accent);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+        }
+
+        /* 观看指南 */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .guide-item {
+            background: rgba(255,255,255,0.03);
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .guide-item:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .guide-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .guide-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .guide-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* FAQ */
+        .faq-section {
+            background: #162032;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-muted);
+            display: none;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+            font-size: 1.5rem;
+        }
+
+        .faq-item.active .faq-question::before {
+            content: '+';
+            display: block;
+        }
+
+        .faq-question::before {
+            content: '+';
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        /* 页脚 */
+        footer {
+            background: #0b1120;
+            padding: 60px 0 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            margin: 0 15px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .nav-inner { flex-direction: column; height: auto; padding: 15px 0; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 15px; }
+            .mobile-menu-btn { display: block; }
+            .plot-content { flex-direction: column; }
+            .guide-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-inner">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                萌学园<span>Wiki</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#characters">角色介绍</a></li>
+                    <li><a href="#plot">剧情解析</a></li>
+                    <li><a href="#guide">观看指南</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <span class="tagline">SEASON 4: THE TIME CHRONICLE</span>
+                <h1>萌学园4：时空任务</h1>
+                <p class="hero-desc">萌骑士团再次集结，面对来自平行时空的威胁，艾瑞克与奈亚公主的命运将如何改写？魔法与科技的终极对决即将开始。</p>
+                <div class="btn-group">
+                    <a href="#plot" class="btn btn-primary">探索剧情</a>
+                    <a href="#guide" class="btn btn-secondary">观看指南</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 角色介绍 -->
+        <section id="characters" class="container">
+            <div class="section-header">
+                <h2 class="section-title">主要角色</h2>
+                <p style="color: var(--text-muted)">核心阵容与关键人物</p>
+            </div>
+            <div class="char-grid">
+                <!-- 角色 1 -->
+                <article class="char-card">
+                    <img src="https://picsum.photos/seed/eric/400/500" alt="艾瑞克" class="char-img">
+                    <div class="char-info">
+                        <h3 class="char-name">艾瑞克</h3>
+                        <p class="char-role">萌骑士 / 智者</p>
+                        <p class="char-desc">时空魔神的化身，内心在正义与黑暗之间挣扎。在第四季中，他不仅要对抗外敌，更要面对自己身世的真相。</p>
+                    </div>
+                </article>
+                <!-- 角色 2 -->
+                <article class="char-card">
+                    <img src="https://picsum.photos/seed/krystal/400/500" alt="奈亚公主" class="char-img">
+                    <div class="char-info">
+                        <h3 class="char-name">奈亚公主</h3>
+                        <p class="char-role">时空之钥</p>
+                        <p class="char-desc">来自平行时空的神秘公主，拥有操控时间的能力。她与艾瑞克有着千丝万缕的联系，是解开时空危机的关键。</p>
+                    </div>
+                </article>
+                <!-- 角色 3 -->
+                <article class="char-card">
+                    <img src="https://picsum.photos/seed/u/400/500" alt="乌拉拉" class="char-img">
+                    <div class="char-info">
+                        <h3 class="char-name">乌拉拉</h3>
+                        <p class="char-role">萌骑士</p>
+                        <p class="char-desc">拥有强大的治愈魔法，是团队中的粘合剂。面对时空裂缝的侵蚀，她展现了前所未有的勇气。</p>
+                    </div>
+                </article>
+                <!-- 角色 4 -->
+                <article class="char-card">
+                    <img src="https://picsum.photos/seed/pa/400/500" alt="帕主任" class="char-img">
+                    <div class="char-info">
+                        <h3 class="char-name">帕主任</h3>
+                        <p class="char-role">校长</p>
+                        <p class="char-desc">萌学园的守护者，虽然年迈，但依然为了保护学生与萌学园的荣耀而战。他在本季中面临了最大的考验。</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 剧情解析 -->
+        <section id="plot" class="plot-section">
+            <div class="container plot-content">
+                <div class="plot-text">
+                    <h2 class="section-title">时空任务的深层含义</h2>
+                    <p>《萌学园4：时空任务》延续了前三季的魔法世界观，引入了“平行时空”的概念。故事始于萌学园深处发现的一扇神秘门扉，它连接着另一个平行宇宙。</p>
+                    <p>在这个宇宙中，时空魔神苏醒，试图吞噬所有的时间线。奈亚公主作为时空的守护者，穿越而来寻找能够阻止这一切的“时空之钥”——也就是萌骑士团。</p>
+                    <p>本季的剧情不仅涉及激烈的魔法战斗，更深入探讨了记忆、牺牲与救赎的主题。艾瑞克是否能够战胜内心的黑暗？萌骑士团能否在破碎的时间线中找到希望？</p>
+                </div>
+                <div class="plot-visual">
+                    <img src="https://picsum.photos/seed/magic/600/400" alt="时空魔法场景">
+                    <div class="plot-badge">S4 精彩高能</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 观看指南 -->
+        <section id="guide" class="container">
+            <div class="section-header">
+                <h2 class="section-title">观看指南</h2>
+                <p style="color: var(--text-muted)">如何开始你的萌骑士之旅</p>
+            </div>
+            <div class="guide-grid">
+                <div class="guide-item">
+                    <span class="guide-icon">🎬</span>
+                    <h3 class="guide-title">观看顺序</h3>
+                    <p class="guide-text">建议按《萌学园1-3》顺序观看，以理解世界观与人物关系。</p>
+                </div>
+                <div class="guide-item">
+                    <span class="guide-icon">🔍</span>
+                    <h3 class="guide-title">关键词汇</h3>
+                    <p class="guide-text">了解“萌骑士”、“时空之钥”、“萌学园”等核心设定。</p>
+                </div>
+                <div class="guide-item">
+                    <span class="guide-icon">⚔️</span>
+                    <h3 class="guide-title">魔法设定</h3>
+                    <p class="guide-text">本季新增“时空操控”与“平行穿越”魔法，需留意细节。</p>
+                </div>
+                <div class="guide-item">
+                    <span class="guide-icon">💬</span>
+                    <h3 class="guide-title">社区讨论</h3>
+                    <p class="guide-text">加入粉丝社区，讨论剧情走向与角色结局。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">常见问题</h2>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">萌学园4在哪里可以观看？</div>
+                    <div class="faq-answer">萌学园系列通常在各大视频平台播出，请关注官方正版渠道获取最新剧集。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">需要看前三季才能看懂第四季吗？</div>
+                    <div class="faq-answer">是的，第四季的剧情承接了前三季的结局，了解前作背景有助于理解角色动机。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">第四季的结局是什么？</div>
+                    <div class="faq-answer">第四季结局涉及时空线的重组，关于艾瑞克和奈亚公主的最终命运，请以正片为准。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">有哪些新角色加入？</div>
+                    <div class="faq-answer">主要加入了来自平行时空的奈亚公主及其护卫队，同时也有反派角色的新形态。</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">关于萌学园</a>
+                <a href="#">角色图鉴</a>
+                <a href="#">幕后花絮</a>
+                <a href="#">联系管理员</a>
+            </div>
+            <p class="copyright">
+                &copy; 2023 萌学园4：时空任务 粉丝整理站. 本站为粉丝非官方站点，仅供学习交流使用。<br>
+                所有版权归原制作公司所有.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的 FAQ 交互逻辑
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // 简单的移动端菜单切换
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navUl = document.querySelector('nav ul');
+        
+        menuBtn.addEventListener('click', () => {
+            if (navUl.style.display === 'flex') {
+                navUl.style.display = 'none';
+            } else {
+                navUl.style.display = 'flex';
+                navUl.style.flexDirection = 'column';
+                navUl.style.position = 'absolute';
+                navUl.style.top = '70px';
+                navUl.style.left = '0';
+                navUl.style.width = '100%';
+                navUl.style.background = '#0f172a';
+                navUl.style.padding = '20px';
+                navUl.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+            }
+        });
+    </script>
+</body>
+  </html>
